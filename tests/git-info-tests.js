@@ -55,11 +55,9 @@ gi('sha', function(err, result) {
   assert.equal(result.sha.length > 7, true);
 });
 
-try {
-  gi('xxx', function (err, result) {});
-} catch (e) {
-  assert(e);
-}
+gi('xxx', function (err, result) {
+  assert(err);
+});
 
 gi(['xxx', 'xxx', 'sha'], function(err, result) {
   assert(!err);

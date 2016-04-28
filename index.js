@@ -79,15 +79,17 @@ var gitInfo = function(gitDataToGet, cb) {
   // We don't want to execute a command that wasn't defined before
   const filtered = gitDataToGet.filter(filterValid.bind(null, responseObject));
   if (filtered.length===0) {
-    throw new Error('No valid definitions for ' +
-      JSON.stringify(responseObject.errors));
+    cb(new Error('No valid definitions for ' +
+      JSON.stringify(responseObject.errors)), responseObject);
+  } else {
+    // Execute all the commands in the same time
+    async.each(filtered, execGitCommand
+      .bind(null, responseObject), function(err) {
+      // And run callback with results when finished
+      cb(err, responseObject);
+    });
   }
-  // Execute all the commands in the same time
-  async.each(filtered, execGitCommand
-    .bind(null, responseObject), function(err) {
-    // And run callback with results when finished
-    cb(err, responseObject);
-  });
+
 };
 
 module.exports = gitInfo;
