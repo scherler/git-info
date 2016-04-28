@@ -1,13 +1,13 @@
+#! /usr/bin/env node
 'use strict';
-
-var exec = require('child_process').exec;
+const exec = require('child_process').exec;
 // Just to be sure we are in the right directory, before runnig any git
 // command we get into the directory where this script was called from
-var path = 'cd ' + process.cwd() + ';';
-var async = require('async');
+const path = 'cd ' + process.cwd() + ';';
+const async = require('async');
 // See https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History
 // List of git commands needed to execute to get given data
-var commands = {
+const commands = {
   name: '(basename $(git rev-parse --show-toplevel))',
   authorDate: 'git --no-pager log --pretty=format:"%ad" -n1',
   authorDateRelative: 'git --no-pager log --pretty=format:"%ar" -n1',
@@ -22,7 +22,7 @@ var commands = {
 };
 
 // This function executes git command and add the data to the final object
-var execGitCommand = function(responseObject, command, cb) {
+const execGitCommand = function(responseObject, command, cb) {
   var response;
   exec(path + commands[command], function(error, stdout, stderr) {
     if (error) {
@@ -61,7 +61,7 @@ function filterValid(responseObject, value) {
 /* Main function
  Create a unique responseObject and return it when all async are done.
   */
-var gitInfo = function(gitDataToGet, cb) {
+const gitInfo = function(gitDataToGet, cb) {
   /* if called with param that must be the callback
     and we assume we want all commands.
    */
@@ -93,3 +93,15 @@ var gitInfo = function(gitDataToGet, cb) {
 };
 
 module.exports = gitInfo;
+// cli
+const userArgs = process.argv.slice(2);
+
+if (userArgs[0]) {
+  gitInfo(userArgs, function(err, response) {
+    console.log(response);
+  });
+} else {
+  gitInfo(function(err, response){
+    console.log(response);
+  });
+}

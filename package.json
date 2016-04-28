@@ -1,6 +1,6 @@
 {
   "name": "giti",
-  "version": "1.0.6",
+  "version": "1.0.10",
   "author": "Thorsten Scherler <tscherler@cloudbees.com, scherler@gmail.com>",
   "contributors": [
     "Michał Budzyński <michal@virtualdesign.pl>"
@@ -10,6 +10,9 @@
     "assert": "^1.1.1",
     "jshint": "^2.5.2",
     "precommit-hook": "^1.0.5"
+  },
+  "bin": {
+    "giti": "index.js"
   },
   "scripts": {
     "test": "node tests/git-info-tests.js",
