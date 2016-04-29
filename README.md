@@ -1,6 +1,6 @@
 # giti
 
-Quick summary and informations about a git rep.
+Quick summary and informations about a git rep returning a js-json object.
 
 originally based on git-info by [@michalbe](http://github.com/michalbe)
 

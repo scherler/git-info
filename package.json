@@ -1,19 +1,28 @@
 {
   "name": "giti",
-  "version": "1.1.0",
+  "version": "1.1.2",
+  "description": "Quick summary and informations about a git rep returning a js-json object.",
+  "license": "Apache/MIT",
   "author": "Thorsten Scherler <tscherler@cloudbees.com, scherler@gmail.com>",
   "contributors": [
     "Michał Budzyński <michal@virtualdesign.pl>"
   ],
   "repository": "git@github.com:scherler/git-info.git",
+  "readmeFilename": "README.md",
   "devDependencies": {
     "assert": "^1.1.1",
     "jshint": "^2.5.2",
     "precommit-hook": "^1.0.5"
   },
+  "main": "index.js",
   "bin": {
-    "giti": "index.js"
+    "giti": "cli.js"
   },
+  "keywords": [
+    "git",
+    "git log",
+    "git cli"
+  ],
   "scripts": {
     "test": "node tests/git-info-tests.js",
     "lint": "node node_modules/jshint/bin/jshint ."

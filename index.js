@@ -1,4 +1,3 @@
-#! /usr/bin/env node
 'use strict';
 const exec = require('child_process').exec;
 // Just to be sure we are in the right directory, before runnig any git
@@ -26,7 +25,10 @@ const execGitCommand = function(responseObject, command, cb) {
   var response;
   exec(path + commands[command], function(error, stdout, stderr) {
     if (error) {
-      console.log(error);
+      if (!responseObject.errors) {
+        responseObject.errors = [];
+      }
+      responseObject.errors.push('Command failed ' + command);
     }
     // Response lines are separated with new line sign, so we remove them
     // (from the begining and the end) using trim() function, then, if asnwer
@@ -54,7 +56,7 @@ function filterValid(responseObject, value) {
     if (!responseObject.errors) {
       responseObject.errors = [];
     }
-    responseObject.errors.push(value);
+    responseObject.errors.push('No valid definitions in giti for ' + value);
   }
   return !!commands[value];
 }
@@ -79,8 +81,7 @@ const gitInfo = function(gitDataToGet, cb) {
   // We don't want to execute a command that wasn't defined before
   const filtered = gitDataToGet.filter(filterValid.bind(null, responseObject));
   if (filtered.length===0) {
-    cb(new Error('No valid definitions for ' +
-      JSON.stringify(responseObject.errors)), responseObject);
+    cb(new Error(JSON.stringify(responseObject.errors)), responseObject);
   } else {
     // Execute all the commands in the same time
     async.each(filtered, execGitCommand
@@ -93,15 +94,3 @@ const gitInfo = function(gitDataToGet, cb) {
 };
 
 module.exports = gitInfo;
-// cli
-const userArgs = process.argv.slice(2);
-
-if (userArgs[0]) {
-  gitInfo(userArgs, function(err, response) {
-    console.log(response);
-  });
-} else {
-  gitInfo(function(err, response){
-    console.log(response);
-  });
-}
