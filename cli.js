@@ -1,4 +1,5 @@
 #! /usr/bin/env node
+'use strict';
 const gitInfo  = require('./index');
 const userArgs = process.argv.slice(2);
 
