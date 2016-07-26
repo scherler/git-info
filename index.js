@@ -7,7 +7,7 @@ const async = require('async');
 // See https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History
 // List of git commands needed to execute to get given data
 const commands = {
-  name: '(basename $(git rev-parse --show-toplevel))',
+  name: 'git remote show origin -n | grep h.URL | sed "s/.*://;s/.git$//"',
   authorDate: 'git --no-pager log --pretty=format:"%ad" -n1',
   authorDateRelative: 'git --no-pager log --pretty=format:"%ar" -n1',
   author: 'git --no-pager log --pretty=format:"%an <%ae>" -n1',

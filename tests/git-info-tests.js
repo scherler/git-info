@@ -8,7 +8,7 @@ gi(function(err, result) {
   assert(!err);
   assert('name' in result);
   assert(!Array.isArray(result.name));
-  assert.equal(result.name, 'git-info');
+  assert.equal(result.name.includes('git-info'), true);
 });
 
 // First argument as a string
@@ -16,7 +16,7 @@ gi('name', function(err, result) {
   assert(!err);
   assert('name' in result);
   assert(!Array.isArray(result.name));
-  assert.equal(result.name, 'git-info');
+  assert.equal(result.name.includes('git-info'), true);
 });
 
 // First argument as an Array
@@ -24,7 +24,7 @@ gi(['name', 'repository'], function(err, result) {
   assert(!err);
   assert('name' in result);
   assert('repository' in result);
-  assert.equal(result.name, 'git-info');
+  assert.equal(result.name.includes('git-info'), true);
 });
 
 // Multiline answer
