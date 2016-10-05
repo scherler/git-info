@@ -5,7 +5,7 @@
   "license": "Apache/MIT",
   "author": "Thorsten Scherler <tscherler@cloudbees.com, scherler@gmail.com>",
   "contributors": [
-    "Michał Budzyński <michal@virtualdesign.pl>"
+    "Michał Budzyński original author <michal@virtualdesign.pl>"
   ],
   "repository": "git@github.com:scherler/git-info.git",
   "readmeFilename": "README.md",
