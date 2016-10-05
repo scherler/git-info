@@ -4,6 +4,26 @@ Quick summary and informations about a git rep returning a js-json object.
 
 originally based on git-info by [@michalbe](http://github.com/michalbe)
 
+[![NPM][npm-icon] ][npm-url]
+
+[![Travis CI][travis-ci-image] ][travis-ci-url]
+[![Coverage Status](https://coveralls.io/repos/github/scherler/git-info/badge.svg?branch=master)](https://coveralls.io/github/scherler/git-info?branch=master)
+[![Quality][quality-badge] ][quality-url]
+[![dependencies][dependencies-image] ][dependencies-url]
+[![devdependencies][devdependencies-image] ][devdependencies-url]
+
+[npm-icon]: https://nodei.co/npm/giti.png?downloads=true
+[npm-url]: https://npmjs.org/package/giti
+[travis-ci-image]: https://travis-ci.org/scherler/git-info.svg?branch=master
+[travis-ci-url]: https://travis-ci.org/scherler/git-info
+
+[dependencies-image]: https://david-dm.org/scherler/git-info.png
+[dependencies-url]: https://david-dm.org/scherler/git-info
+[devdependencies-image]: https://david-dm.org/scherler/git-info/dev-status.png
+[devdependencies-url]: https://david-dm.org/scherler/git-info#info=devDependencies
+
+[quality-badge]: http://npm.packagequality.com/shield/giti.svg
+[quality-url]: http://packagequality.com/#?package=giti
 
 ### How to use: ###
 ```
