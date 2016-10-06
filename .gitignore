@@ -25,5 +25,5 @@ node_modules
 .idea
 
 # test coverage
-tests-cov
+test-cov
 test/*-cov.js
